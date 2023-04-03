@@ -36,8 +36,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor  isgame */
-	{ "discord",  NULL,       NULL,       1 << 0,       0,           -1 },
-	{ "Steam",    NULL,       NULL,       1 << 4,       0,           -1 			1},
+	{ "discord",  NULL,       NULL,       1 << 0,       0,           -1,			0 },
+	{ "Steam",    NULL,       NULL,       1 << 4,       0,           -1, 			1 },
 	{ "steam_app",NULL,       NULL,       1 << 5,       0,           -1,      1 },
 };
 
@@ -115,5 +115,5 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,   {0} },
+	{ ClkTagBar,            0,              Button3,        toggleview,   	{0} },
 };
