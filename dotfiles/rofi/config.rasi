@@ -1,5 +1,11 @@
+*{
+  active-text: #99df9b;
+  inactive-text: #72a577;
+  background:#222;
+  text-color: @inactive-text;
+}
 configuration {
-  modes: "drun,calc";
+  modes: "drun";
   font: "Ubuntu, regular: 17px";
   show-icons: true;
   terminal: "kitty";
@@ -9,74 +15,72 @@ configuration {
   threads:4;
   hover-select:false;
   keep-selection:false;
+  sorting-method:"fzf";
 }
-
 window {
   border-radius:5px;
   border:1px;
   border-color: transparent;
   width: 950px;
   padding: 3 3 3 3;
-  color: #99DF9B;
-  background-color: #222;
+  background-color: var(background);
   spacing: 0;
-  children:  [inputbar, listview];
+  children:  [inputbar, message, listview];
   orientation: vertical;
   transparency: "screenshot"; 
 }
 
 inputbar {
-  children: [entry,overlay,case-indicator];
-
-  color: #99DF9B;
+  children: [entry];
+  color: var(active-text);
   padding: 10px;
-  background-color: #222;
+  background-color: var(background);
   border: 2 dash 0 2 dash 0;
-  border-color: #91D298;
+  border-color: var(inactive-text);
   border-radius: 3px;
 }
-prompt {
-  enabled: false;
+  entry {
+    cursor: text;
+    placeholder: "uwu";
+    text-color:var(active-text);
+  }
+
+textbox {
+  color: var(active-text);
 }
-entry {
-  placeholder: "uwu";
-  text-color:#91D298;
-}
-inputbar.prompt {
-  
-}
+
 listview {
+  border:0;
   scrollbar:false;
-  background-color: #222;
+  background-color: var(background);
 	lines: 5;
 	columns: 4;
 }
-
-element {
-  color: #99e1a8;
-  orientation: vertical;
-  border: 2px solid;
-  border-color: #007575;
-  border-radius: 3px;
-  cursor: default;
-  children: [ element-icon, element-text  ];
-  background-color: #222;
-  color: black;
-}
-#element selected.normal {
-  background-color:  #494949;
-  color: #ffffff;
-}
-#element normal normal {
-  background-color:  #222;
-}
-element alternate normal {
-  background-color: #222;
-}
-element-text {
-  color: #99DF9B;
-  horizontal-align: 0.5;
-}
-element-icon {
-  size: 30px;
-}
+  element {
+    text-color: var(inactive-text);
+    orientation: vertical;
+    border: 2px solid;
+    border-color: #007575;
+    border-radius: 3px;
+    cursor: default;
+    children: [ element-icon, element-text  ];
+    background-color: #222;
+  }
+  element selected normal {
+    background-color:  #494949;
+    text-color: var(active-text);
+  }
+  element normal normal {
+    background-color:  #222;
+    text-color: var(inactive-text);
+  }
+  element alternate normal {
+    background-color: #222;
+    text-color: var(inactive-text);
+  }
+  element-text {
+    horizontal-align: 0.5;
+  }
+  element-icon {
+    size: 30px;
+  }

@@ -67,7 +67,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *screenshot[] = {"flameshot", "gui", NULL};
-static const char *calculator[] = {"rofi", "-show", "calc", NULL};
+static const char *calculator[] = {"rofi", "-show", "calc", "-modi", "calc", "-no-show-match", "-no-sort"};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
