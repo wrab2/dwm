@@ -12,9 +12,9 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=12" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray[]       	= "#222222";
+static const char col_gray[]        = "#222222";
 static const char col_gray2[]       = "#7e7e7e"; /* inactive text */
-static const char col_cyan[]   	    = "#007575";
+static const char col_cyan[]        = "#007575";
 static const char col_green[]       = "#99e1a8";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -36,9 +36,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor  isgame */
-	{ "discord",  NULL,       NULL,       1 << 0,       0,           -1,			0 },
-	{ "Steam",    NULL,       NULL,       1 << 4,       0,           -1, 			1 },
-	{ "steam_app",NULL,       NULL,       1 << 5,       0,           -1,      1 },
+	{ "discord",    NULL,       NULL,       1 << 0,       0,           -1,      0 },
+	{ "steam",      NULL,       NULL,       1 << 4,       0,           -1,      0 },
+	{ "steam_app",  NULL,       NULL,       1 << 5,       0,           -1,      1 },
 };
 
 /* layout(s) */
@@ -72,9 +72,9 @@ static const char *calculator[] = {"rofi", "-show", "calc", "-modi", "calc", "-n
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,												XK_c,	   	 spawn,	   			 {.v = calculator}},
-	{ MODKEY,	                			XK_Return, spawn,          {.v = termcmd } },
-	{ 0,														XK_Print,  spawn,	   			 {.v = screenshot } },
+	{ MODKEY,                       XK_c,      spawn,          {.v = calculator}},
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
 	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -86,10 +86,10 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_p,      setcfact,       {.f =  0.00} },
 	{ MODKEY,                       XK_z,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,	          						XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_f,      togglefullscreen, {0} },
-	{ MODKEY|ShiftMask,             XK_f,      togglefakefullscreen, {0} },
+	{ MODKEY,                       XK_q,      killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating,          {0} },
+	{ MODKEY,                       XK_f,      togglefullscreen,        {0} },
+	{ MODKEY|ShiftMask,             XK_f,      togglefakefullscreen,    {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -115,5 +115,5 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,   	{0} },
+	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 };
