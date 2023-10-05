@@ -1,6 +1,5 @@
 numlockx &
-xkbset bo 20 &
-xbindkeys -p &
+xkbset bo 60 &
 dwmblocks &
 nitrogen --restore &
 dunst -conf ~/.config/dunstrc &
