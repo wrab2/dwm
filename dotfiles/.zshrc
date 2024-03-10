@@ -37,7 +37,7 @@ alias tethering='echo 65 | sudo tee /proc/sys/net/ipv4/ip_default_ttl'
 
 function nvidia-update() {
     cd  ~/Documents/nvidia-all && 
-    rm ./*.tar ; 
+    rm ./*.tar.zst ;
     git restore .; 
     git pull --rebase  && 
     patch -i ~/dwm/dotfiles/nvidia-customization.diff &&
