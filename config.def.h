@@ -18,7 +18,7 @@ static const char col_cyan[]        = "#007575";
 static const char col_green[]       = "#99e1a8";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray2, col_gray,   col_gray },
+	[SchemeNorm] = { col_gray2, col_gray,  col_gray  },
 	[SchemeSel]  = { col_green, col_gray,  col_cyan  },
 };
 
@@ -35,11 +35,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance     title       tags mask     isfloating   monitor*/
-	{ "discord",    NULL,       NULL,       1 << 0,       0,           -1, },
-	{ "steam",      NULL,       NULL,       1 << 4,       0,           -1, },
-	{ "steam_app",  NULL,       NULL,       1 << 3,       0,           -1, },
-	{ "obs",        NULL,       NULL,       1 << 8,       0,           -1, },
+	/* class      instance        title       tags mask     isfloating   monitor*/
+	{ "steam",      NULL,         NULL,       1 << 4,       0,           -1, },
+	{ "steam_app",  NULL,         NULL,       1 << 3,       0,           -1, },
+	{ "obs",        NULL,         NULL,       1 << 8,       0,           -1, },
+	{ "kmix",       NULL,         NULL,       0,            1,           -1, },
 };
 
 /* layout(s) */
@@ -68,14 +68,16 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *screenshot[] = {"flameshot", "gui", NULL};
-//static const char *calculator[] = {"rofi", "-show", "calc", "-modi", "calc", "-no-show-match", "-no-sort", "-eh='1'", NULL};
-static const char *calculator[] = {"sh", "-c", "/home/$USER/dwm/rofi-calc.sh", NULL};
+static const char *lockscreen[] = { "slock", NULL};
+// it stopped working the normal way
+static const char *calculator[] = {"sh", "-c", "/home/$USER/dwm/dotfiles/rofi-calc.sh", NULL};
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = calculator}},
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
+	{ MODKEY,                       XK_Escape, spawn,          {.v = lockscreen } },
 	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },

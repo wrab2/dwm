@@ -23,17 +23,21 @@ bindkey "^[[3~"   delete-char
 bindkey "^[[3;5~" delete-word
 bindkey "^H" backward-delete-word
 
-alias x='startx'
+# without this some apps crash when I turn off the screen 
+alias x='SDL_VIDEO_X11_XRANDR=0 startx'
 alias p='shutdown --poweroff -h now'
-alias u="arch-update"
+alias u='arch-update'
 alias ls='eza --icons --colour=auto'
 alias vim='nvim'
 alias sudo='doas'
-alias grep="grep --color=auto"
+alias grep='grep --color=auto'
 alias VMnetwork='doas virsh net-start default'
 alias bu='cp ~/Videos/Shrek/Shrek.mp4 /run/media/twm/301925D0397CD80F/Shrek/"$(date +%b-%d-%y).mp4"'
+alias offline='firejail --net=none --noprofile'
 #mobile phone service provider scam
 alias tethering='echo 65 | sudo tee /proc/sys/net/ipv4/ip_default_ttl'
+#I hate it here
+alias yt-dlp='proxychains yt-dlp'
 
 function nvidia-update() {
     cd  ~/Documents/nvidia-all && 
@@ -45,3 +49,11 @@ function nvidia-update() {
     makepkg -si && 
     sudo nvidia-modprobe
 }
+
+# pnpm
+export PNPM_HOME="/home/twm/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

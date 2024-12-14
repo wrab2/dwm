@@ -1,3 +1,6 @@
 dwm
-config.h
+*.1
+*config.h
 *.o
+slstatus/slstatus
+slock/slock
